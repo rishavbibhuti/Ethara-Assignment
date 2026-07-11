@@ -10,6 +10,14 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./seat_allocation.db")
 
+# Managed Postgres providers (Render, Railway, Heroku, Neon...) hand out URLs
+# starting with "postgres://", which SQLAlchemy 2.x no longer accepts, and none
+# specify the psycopg2 driver. Normalize both cases so the app just works.
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+psycopg2://", 1)
+elif DATABASE_URL.startswith("postgresql://"):
+    DATABASE_URL = DATABASE_URL.replace("postgresql://", "postgresql+psycopg2://", 1)
+
 # check_same_thread is only needed for SQLite.
 connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
 
