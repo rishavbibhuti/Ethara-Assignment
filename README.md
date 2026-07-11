@@ -84,7 +84,6 @@ seat-allocation-system/
 │   │   └── services/nl_query.py  # natural-language query engine
 │   ├── requirements.txt
 │   ├── Dockerfile
-│   ├── render.yaml
 │   └── .env.example
 ├── frontend/
 │   ├── src/
@@ -95,6 +94,7 @@ seat-allocation-system/
 │   ├── vercel.json
 │   └── .env.example
 ├── docs/                      # DATABASE_SCHEMA, API, DEPLOYMENT, DEBUGGING
+├── render.yaml                # Render blueprint (backend + Postgres)
 ├── AI_PROMPTS.md
 └── README.md
 ```

@@ -21,7 +21,9 @@ postgresql+psycopg2://USER:PASSWORD@HOST:5432/DBNAME
 
 ## 2. Backend (Render example)
 
-A `render.yaml` and `Dockerfile` are included in `backend/`.
+A `render.yaml` blueprint is at the repo root and a `Dockerfile` is in `backend/`.
+The blueprint provisions the web service **and** a free Postgres, and seeds the DB
+on deploy — so "New + → Blueprint" is the fastest path.
 
 **Render (Docker or native Python):**
 - Root directory: `backend`
